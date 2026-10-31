@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Preparation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f0f6ff;
+      color: #333;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 50px 20px;
+      background: linear-gradient(135deg, #007bff, #66b3ff);
+      color: white;
+      animation: fadeSlide 1s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeSlide {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Section Cards */
+    .section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #eaf4ff;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      background: #d6ebff;
+    }
+
+    .section i {
+      font-size: 2.5rem;
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #007bff;
+    }
+
+    .section ul {
+      text-align: left;
+      display: inline-block;
+      margin: 10px 0 0 0;
+      padding-left: 20px;
+      font-size: 1rem;
+    }
+
+    .section li {
+      margin-bottom: 8px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: block;
+      margin: 40px auto 60px auto;
+      padding: 12px 30px;
+      background: #fff;
+      color: #007bff;
+      font-weight: 600;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #cce4ff;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 950px) {
+      .section {
+        width: 90%;
+      }
+    }
+
+    /* Dark Mode Styles */
+    body.dark {
+    background: #111827;
+    color: #f9fafb;
+  }
+
+  body.dark .hero {
+    background: linear-gradient(135deg, #1f2937, #374151);
+     color: #60a5fa;
+  }
+
+ body.dark  .hero h1 {
+  color: #60a5fa;
+      
+    }
+
+   body.dark .hero p {
+      color: #60a5fa;
+    }
+
+  body.dark .cards .card {
+    background: #1e293b;
+    color: #f9fafb;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+  }
+
+  body.dark .cards .card:hover {
+    background: #273449;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+  }
+
+  body.dark .card i,
+  body.dark .card h3,
+  body.dark .card button {
+    color: #60a5fa;
+  }
+
+  body.dark .card button {
+    background: #2563eb;
+    color:white;
+  }
+
+  body.dark .card button:hover {
+    background: #1e40af;
+  }
+
+  body.dark .info-container {
+    background: #1e293b;
+    color: #f9fafb;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+  }
+
+  body.dark .info-container h4 {
+    color: #60a5fa;
+  }
+
+  body.dark .back-btn {
+    background: #1e293b;
+    color: #60a5fa;
+    border: 1px solid #2563eb;
+  }
+
+  body.dark .back-btn:hover {
+    background: #2563eb;
+    color: #fff;
+  }
+ 
+  body.dark .section{
+     background: #1e293b;
+
+  }
+
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Interview Preparation</h1>
+    <p>Get ready for your next interview with common questions, tips, and a complete preparation checklist.</p>
+  </div>
+
+  <!-- Common Interview Questions -->
+  <div class="section">
+    <i class="fas fa-question-circle"></i>
+    <h2>Common Interview Questions</h2>
+    <ul>
+      <li>Tell me about yourself.</li>
+      <li>What are your strengths and weaknesses?</li>
+      <li>Why do you want to work here?</li>
+      <li>Describe a challenge you faced and how you overcame it.</li>
+      <li>Where do you see yourself in 5 years?</li>
+    </ul>
+  </div>
+
+  <!-- In-person and Virtual Interview Tips -->
+  <div class="section">
+    <i class="fas fa-video"></i>
+    <h2>In-person & Virtual Interview Tips</h2>
+    <ul>
+      <li>Dress professionally, even for virtual interviews.</li>
+      <li>Maintain good posture and eye contact.</li>
+      <li>Test your camera, microphone, and internet before virtual interviews.</li>
+      <li>Research the company and prepare questions.</li>
+      <li>Be punctual and polite.</li>
+    </ul>
+  </div>
+
+  <!-- Preparation Checklists -->
+  <div class="section">
+    <i class="fas fa-check-circle"></i>
+    <h2>Preparation Checklist</h2>
+    <ul>
+      <li>Update resume and LinkedIn profile.</li>
+      <li>Prepare examples of past projects or achievements.</li>
+      <li>Practice common interview questions.</li>
+      <li>Prepare answers for behavioral and technical questions.</li>
+      <li>Keep necessary documents ready (resume, portfolio, ID).</li>
+    </ul>
+  </div>
+
+  <button class="back-btn" onclick="window.location.href='resources.html'">← Back to Career Resources</button>
+  
+
+  <script>
+  // Apply dark mode based on Resources page setting
+  function applyDarkMode(dark) {
+    document.body.classList.toggle('dark', dark);
+
+    // Cards
+    document.querySelectorAll('.card').forEach(card => {
+      if(dark){
+        card.style.background = '#1e293b';
+        card.style.color = '#f9fafb';
+        card.style.boxShadow = '0 4px 15px rgba(255,255,255,0.05)';
+      } else {
+        card.style.background = '#eaf4ff';
+        card.style.color = '#ffffff';
+        card.style.boxShadow = '0 4px 15px rgba(0,0,0,0.08)';
+      }
+    });
+
+    // Hero section
+    document.querySelector('.hero').style.background = dark 
+      ? 'linear-gradient(135deg, #1f2937, #374151)' 
+      : 'linear-gradient(135deg, #007bff, #66b3ff)';
+    document.querySelector('.hero').style.color = dark ? '#f9fafb' : '#ffffff';
+
+    // Info container
+    const infoContainer = document.getElementById('info-container');
+    if(infoContainer){
+      infoContainer.style.background = dark ? '#1e293b' : '#d6ebff';
+      infoContainer.style.color = dark ? '#f9fafb' : '#333';
+      infoContainer.style.boxShadow = dark ? '0 4px 15px rgba(255,255,255,0.05)' : '0 4px 15px rgba(0,0,0,0.1)';
+    }
+
+    // Back button
+    const backBtn = document.querySelector('.back-btn');
+    if(backBtn){
+      backBtn.style.background = dark ? '#1e293b' : '#fff';
+      backBtn.style.color = dark ? '#60a5fa' : '#007bff';
+      backBtn.style.border = dark ? '1px solid #2563eb' : 'none';
+    }
+  }
+
+  // Load dark mode from localStorage
+  window.addEventListener('load', () => {
+    const dark = localStorage.getItem('theme') === 'dark';
+    applyDarkMode(dark);
+  });
+
+  
+  
+</script>
+</body>
+</html>

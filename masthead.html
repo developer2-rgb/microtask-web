@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Project | Job Junction</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* Root Colors & Variables */
+    :root {
+      --primary-50: #eff6ff;
+      --primary-500: #3b82f6;
+      --primary-700: #1d4ed8;
+      --gray-50: #f9fafb;
+      --gray-200: #e5e7eb;
+      --gray-900: #111827;
+      --white: #ffffff;
+      --background: var(--white);
+      --surface: var(--gray-50);
+      --text-primary: var(--gray-900);
+      --accent: var(--primary-500);
+      --accent-hover: var(--primary-700);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: var(--background);
+      color: var(--text-primary);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: var(--accent-hover);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--gray-900);
+    }
+
+    /* Masthead */
+    .masthead-header {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #b0d2ff;
+      color: #333;
+    }
+
+    .masthead-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .masthead-header p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Mission */
+    .mission {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    /* Core Team */
+    #core-team {
+      text-align: center;
+      padding: 50px 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+
+    .contributors {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .contributor {
+      width: 120px;
+      text-align: center;
+    }
+
+    .contributor img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+    }
+
+    .contributor p, .contributor small {
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      text-align: center;
+      padding: 30px 20px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin: 40px auto;
+    }
+
+    .contact h2 {
+      color: var(--accent);
+      margin-bottom: 25px;
+    }
+
+    .contact-card {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .inner-card {
+      background: #f3f4f6;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      flex: 1 1 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 0;
+    }
+
+    .inner-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .inner-card p {
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    .inner-card a {
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .inner-card a:hover {
+      color: var(--primary-700);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      font-size: 1.5rem;
+      color: var(--accent);
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--primary-700);
+      transform: scale(1.2);
+    }
+
+    /* Launch Info */
+    .launch {
+      text-align: center;
+      padding: 20px;
+      background: #eee;
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    /* Back to Top Button */
+    #backToTop {
+      height: 50px;
+      width: 50px;
+      position: fixed;
+      bottom: 40px;
+      right: 20px;
+      z-index: 1000;
+      background: linear-gradient(135deg,#0077b5 ,#4facfe );
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #backToTop:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .masthead-header h2 { font-size: 2rem; }
+      .masthead-header p { font-size: 1rem; }
+      .contact-card { flex-direction: column; align-items: center; gap: 15px; }
+      .inner-card { width: 100%; padding: 15px; }
+      .social-icons { gap: 12px; }
+      .social-icons a { font-size: 1.3rem; }
+    }
+
+    /* Dark Theme */
+    :root[data-theme="dark"] {
+      --background: #111827;
+      --surface: #1f2937;
+      --text-primary: #f9fafb;
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+    }
+
+    body[data-theme="dark"] {
+      background: var(--background);
+      color: var(--text-primary);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .theme-toggle:hover { background: var(--accent-hover); }
+@media (max-width: 480px) {
+  .contact-card {
+    flex-direction: column;      /* Stack cards vertically */
+    align-items: center;         /* Center them */
+    gap: 10px;                   /* Reduce gap between cards */
+  }
+
+  .inner-card {
+    width: 100%;                 /* Full width */
+    padding: 15px;               /* Adjust padding */
+    margin-bottom: 0;            /* Remove extra bottom margin */
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <section class="masthead-header">
+    <h2>Masthead</h2>
+    <p>This section introduces our job portal’s identity, vision, and key offerings to guide users from the very first glance.</p>
+    <button id="themeToggle" class="theme-toggle">🌙 Dark Mode</button>
+  </section>
+
+  <div class="container">
+
+    <!-- Mission -->
+    <section class="mission">
+      <h2>Project Mission Statement</h2>
+      <p>Job Junction aims to connect job seekers and employers worldwide by providing accessible job listings, internship opportunities, and career resources. Our goal is to empower students and professionals with the tools needed to succeed in the global job market.</p>
+    </section>
+
+    <!-- Core Team -->
+    <section id="core-team">
+      <h2>Core Team</h2>
+      <div id="contributors" class="contributors"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+      <h2>Contact Information</h2>
+      <div class="contact-card">
+        <div class="inner-card">
+          <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:jobjunction@gmail.com">jobjunction@gmail.com</a></p>
+          <p><i class="fa-brands fa-github"></i> GitHub: <a href="https://github.com/SurajSG23/Job-Portal" target="_blank">Job Junction Repo</a></p>
+        </div>
+        <div class="inner-card">
+          <p>Follow us:</p>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Launch Info -->
+    <section class="launch">
+      <p><strong>Launch Date:</strong> August 2025</p>
+      <p><strong>Current Version:</strong> v1.0.0</p>
+    </section>
+
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop">↑</button>
+
+  <script>
+    // Fetch GitHub Contributors
+    async function fetchContributors() {
+      try {
+        const response = await fetch("https://api.github.com/repos/SurajSG23/Job-Portal/contributors");
+        const contributors = await response.json();
+        const container = document.getElementById("contributors");
+        container.innerHTML = "";
+        contributors.forEach(c => {
+          const div = document.createElement("div");
+          div.classList.add("contributor");
+          div.innerHTML = `
+            <a href="${c.html_url}" target="_blank">
+              <img src="${c.avatar_url}" alt="${c.login}">
+              <p>${c.login}</p>
+              <small>Commits: ${c.contributions}</small>
+            </a>
+          `;
+          container.appendChild(div);
+        });
+      } catch(e) { console.error(e); }
+    }
+    fetchContributors();
+
+    // Back to Top
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      backToTop.style.display = window.scrollY > 50 ? "block" : "none";
+    });
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Theme Toggle
+    const themeToggle = document.getElementById("themeToggle");
+    const root = document.documentElement;
+    if(localStorage.getItem("theme") === "dark") {
+      root.setAttribute("data-theme", "dark");
+      themeToggle.textContent = "☀️ Light Mode";
+    }
+    themeToggle.addEventListener("click", () => {
+      if(root.getAttribute("data-theme") === "dark") {
+        root.removeAttribute("data-theme");
+        localStorage.setItem("theme", "light");
+        themeToggle.textContent = "🌙 Dark Mode";
+      } else {
+        root.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        themeToggle.textContent = "☀️ Light Mode";
+      }
+    });
+  </script>
+</body>
+</html>
