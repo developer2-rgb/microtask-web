@@ -358,8 +358,12 @@ body.dark-mode .form-switch a {
 </html>
 
 
-  <script>
+  <!-- ফায়ারবেস এবং মডিউল সাপোর্ট সহ সম্পূর্ণ ঠিক করা স্ক্রিপ্ট -->
+  <script type="module">
+    // ১. সবার উপরে ফায়ারবেস এবং প্রয়োজনীয় মেথডগুলো ইমপোর্ট করুন
     import { auth, db } from "./firebase-config.js";
+    import { createUserWithEmailAndPassword } from "https://gstatic.com";
+    import { doc, setDoc } from "https://gstatic.com";
 
     document.addEventListener('DOMContentLoaded', () => {
       const signupForm = document.getElementById("signup-form");
@@ -375,6 +379,7 @@ body.dark-mode .form-switch a {
       const togglePasswordIcons = document.querySelectorAll('.toggle-password');
 
       const showFeedback = (element, message, show) => {
+        if (!element) return;
         element.textContent = message;
         element.style.visibility = show ? 'visible' : 'hidden';
         element.style.opacity = show ? '1' : '0';
@@ -396,7 +401,7 @@ body.dark-mode .form-switch a {
       });
 
       signupEmail.addEventListener("input", () => {
-        const regex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const isValid = regex.test(signupEmail.value);
         showFeedback(emailFeedback, "Please enter a valid email.", !isValid && signupEmail.value.length > 0);
       });
@@ -412,10 +417,11 @@ body.dark-mode .form-switch a {
         showFeedback(matchFeedback, "Passwords do not match.", !isValid && confirmPassword.value.length > 0);
       });
 
-      signupForm.addEventListener("submit", function (e) {
+      // ফায়ারবেস ক্লাউড সাবমিশন ইন্টিগ্রেশন
+      signupForm.addEventListener("submit", async function (e) {
         e.preventDefault();
         const isNameValid = signupName.value.trim() !== "";
-        const isEmailValid = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(signupEmail.value);
+        const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signupEmail.value);
         const isPasswordValid = signupPassword.value.length >= 6;
         const doPasswordsMatch = signupPassword.value === confirmPassword.value;
 
@@ -424,38 +430,60 @@ body.dark-mode .form-switch a {
         showFeedback(strengthFeedback, "Password must be at least 6 characters.", !isPasswordValid);
         showFeedback(matchFeedback, "Passwords do not match.", !doPasswordsMatch);
 
+        // সব লোকাল ভ্যালিডেশন পাস হলে ফায়ারবেসে ডেটা পাঠানো হবে
         if (isNameValid && isEmailValid && isPasswordValid && doPasswordsMatch) {
-          alert("Account created successfully!");
-          window.location.href = "login.html";
+          try {
+            // ১. ফায়ারবেস অথেন্টিকেশনে ইউজার তৈরি
+            const userCredential = await createUserWithEmailAndPassword(auth, signupEmail.value, signupPassword.value);
+            const user = userCredential.user;
+
+            // ২. ফায়ারবেস ফায়ারস্টোর ডাটাবেজে ইউজারের প্রোফাইল ডকুমেন্ট তৈরি
+            await setDoc(doc(db, "users", user.uid), {
+              uid: user.uid,
+              username: signupName.value.trim(),
+              email: signupEmail.value,
+              balance: 0.00, // প্রাথমিক ব্যালেন্স জিরো সেট করা হলো
+              completedTasks: []
+            });
+
+            alert("Account created successfully! 🌟");
+            window.location.href = "index.html"; // সফল হলে সরাসরি মেইন ড্যাশবোর্ডে নিয়ে যাবে
+
+          } catch (error) {
+            alert("Firebase Error: " + error.message);
+          }
         }
       });
     });
 
-    // Google Sign-In callback
-    function handleCredentialResponse(response) {
+    // Google Sign-In callback (গ্লোবাল স্কোপে রাখার জন্য উইন্ডো অবজেক্টে দেওয়া হলো)
+    window.handleCredentialResponse = function(response) {
       console.log("Encoded JWT ID token: " + response.credential);
       alert("Google Sign-In successful! 🌟");
-      window.location.href = "login.html";
+      window.location.href = "index.html"; // গুগল দিয়ে সফল লগইনেও ড্যাশবোর্ডে যাবে
     }
 
     window.onload = function () {
-      google.accounts.id.initialize({
-        client_id: "YOUR_CLIENT_ID_HERE",
-        callback: handleCredentialResponse
-      });
-      google.accounts.id.renderButton(
-        document.querySelector(".g_id_signin"),
-        { theme: "outline", size: "large" }
-      );
+      if (typeof google !== 'undefined') {
+        google.accounts.id.initialize({
+          client_id: "YOUR_CLIENT_ID_HERE", // আপনার গুগল ক্লায়েন্ট আইডি এখানে বসাবেন
+          callback: window.handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+          document.querySelector(".g_id_signin"),
+          { theme: "outline", size: "large" }
+        );
+      }
     };
   </script>
+
   <script>
-  // Detect saved theme from home page
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-  }
-</script>
+    // ডার্ক মোড এবং থিম ডিটেকশন ইঞ্জিন
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  </script>
 
 </body>
 </html>
