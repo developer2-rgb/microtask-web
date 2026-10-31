@@ -345,8 +345,22 @@ body.dark-mode .form-switch a {
       </form>
     </section>
   </main>
+      <!-- আপনার সাইন-আপ ফর্মের নিচে -->
+
+    <script type="module">
+        // সবার উপরে ইমপোর্ট লাইনটি দিবেন
+        import { auth, db } from "./firebase-config.js";
+
+        // এর নিচে আপনার সাইন-আপ ফর্মের বাকি কাজগুলো হবে
+        console.log("Firebase Connected:", auth, db);
+    </script>
+</body>
+</html>
+
 
   <script>
+    import { auth, db } from "./firebase-config.js";
+
     document.addEventListener('DOMContentLoaded', () => {
       const signupForm = document.getElementById("signup-form");
       const signupName = document.getElementById("signup-name");
